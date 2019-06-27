@@ -10,14 +10,11 @@
         <ui:composition template="/templates/adminTemplate.xhtml">
             <ui:define name="content">
                 <h1> Register Provider</h1>
-                <h:outputText value="Unauthorised Access"
-                              rendered="#{not adminMBean.correct}"/>
                 <hr />
                 <br/>
                 <h:form>
                     <h:panelGrid columns="2" border = "5"
-                                    cellpadding = "10" cellspacing = "1"
-                                    rendered="#{adminMBean.correct}" >
+                                    cellpadding = "10" cellspacing = "1">
                         <h:outputText value="Provider Name"/>
                         <h:inputText value="#{registerProviderMBean.name}" size="10">
                             <f:validateLength minimum="1" maximum="30"/>
@@ -33,8 +30,7 @@
                     </h:panelGrid>
 
                     <h:panelGrid columns="2">
-                        <h:commandButton value="Register Provider" action='reg_success'
-                                         rendered="#{adminMBean.correct}" >
+                        <h:commandButton value="Register Provider" action='reg_success'>
                             <f:actionListener binding="#{registerProviderMBean.register()}" />
                         </h:commandButton>
                         <h:commandButton value="Back" action="admin_home" immediate="true"/>

@@ -9,8 +9,6 @@
         <ui:composition template="/templates/freelancerTemplate.xhtml">
             <ui:define name="content">
                 <h1>Greetings #{freelancerMBean.getFreelancerName()}</h1>
-                <h:outputText value="Unauthorised Access"
-                              rendered="#{not freelancerMBean.correct}"/>
                 <hr/>
                 <h3> Your Balance is #{freelancerMBean.getFreelancerBalance()} </h3>
                 <h:form>

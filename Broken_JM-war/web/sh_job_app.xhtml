@@ -10,13 +10,10 @@
         <ui:composition template="/templates/providerTemplate.xhtml">
             <ui:define name="content">
                 <h1>Check Applicants for the below jobs</h1>
-                <h:outputText value="Unauthorised Access"
-                              rendered="#{not providerMBean.correct}"/>
                 <hr />
                 <h3>
                     <h:dataTable value="#{providerMBean.showJobApplicants()}" 
-                                 var="jobs" border="1" cellpadding="10"
-                                 rendered="#{providerMBean.correct}" >
+                                 var="jobs" border="1" cellpadding="10">
 
                         <h:column>
                             <f:facet name="header">ID</f:facet>
@@ -40,8 +37,7 @@
                         </h:column>
                         <h:column>
                             <h:form>
-                                <h:commandButton action="see_app" value="See Applicants"
-                                                 rendered ="#{providerMBean.correct}" >
+                                <h:commandButton action="see_app" value="See Applicants">
                                     <f:actionListener binding="#{providerMBean.storeJobId(jobs)}" />
                                 </h:commandButton>
                             </h:form>
