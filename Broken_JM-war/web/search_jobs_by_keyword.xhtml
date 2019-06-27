@@ -1,0 +1,46 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets">
+    
+    <h:body>
+        
+        <ui:composition template="/templates/freelancerTemplate.xhtml">
+            <ui:define name="content">
+                <h1>Jobs containing #{jobMBean.search}</h1>
+                <h:outputText value="Unauthorised Access"
+                              rendered="#{not freelancerMBean.correct}"/>
+                <h3>
+                    <h:dataTable value="#{jobMBean.searchJobs()}" 
+                                 var="jobs" border="1" cellpadding="10"
+                                 rendered="#{freelancerMBean.correct}" >
+                        <h:column>
+                            <f:facet name="header">ID</f:facet>
+                                #{jobs.id}
+                        </h:column>
+                        <h:column>
+                            <f:facet name="header">Job Title</f:facet>
+                                #{jobs.title}
+                        </h:column>
+                        <h:column>
+                            <h:form>
+                                <h:commandButton action="sh_job_desc" value="Show Description">
+                                    <f:actionListener binding="#{freelancerMBean.storeJobId(jobs)}" />
+                                </h:commandButton>
+                            </h:form>
+                        </h:column>
+                    </h:dataTable>
+                </h3>
+                <br/><br/>
+            
+                <h:form>
+                    <h:commandButton action="freelancer_search_jobs" value="Back to Search"/>
+                </h:form>
+            </ui:define>
+        </ui:composition>
+        
+    </h:body>
+</html>
+

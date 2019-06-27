@@ -1,0 +1,35 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:ez = "http://java.sun.com/jsf/composite/ezcomp">
+    
+    <h:body>
+        
+        <ui:composition template="/templates/providerTemplate.xhtml">
+            <ui:define name="content">
+                <h1> Create Job</h1>
+                <h:outputText value="Unauthorised Access"
+                              rendered="#{not providerMBean.correct}"/>
+                <hr/>
+                <h:form>
+                    <ez:createJobComp
+                        jobTitleLabel="Job Title"
+                        jobTitleValue="#{providerMBean.title}" 
+                        jobDescLabel="Job Description" 
+                        jobDescValue="#{providerMBean.description}" 
+                        jobPayLabel="Payment" 
+                        jobPayValue="#{providerMBean.pay}" 
+                        jobKeyLabel="Keywords" 
+                        jobKeyValue="#{providerMBean.keywords}" 
+                        createButtonLabel="Create Job" rendered="#{providerMBean.correct}"
+                        />                   
+                </h:form>
+                <br/><br/>
+            </ui:define>
+        </ui:composition>
+        
+    </h:body>
+</html>
+

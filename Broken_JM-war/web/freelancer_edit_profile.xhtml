@@ -1,0 +1,69 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets">
+    
+    <h:body>
+        
+        <ui:composition template="/templates/freelancerTemplate.xhtml">
+            <ui:define name="content">
+                <h1>Edit your Profile</h1>
+                <h:outputText value="Unauthorised Access"
+                              rendered="#{not freelancerMBean.correct}"/>
+                <h:form>
+                    <h3>
+                    <h:dataTable value='#{freelancerMBean.searchFreelancersName()}' var='freelancers'
+                                 border='1' width='300' cellpadding="5"
+                                 rendered="#{freelancerMBean.correct}" >
+                        <h:column>
+                            <f:facet name='header'>Name</f:facet>
+                            <h:inputText value="#{freelancerMBean.name}" size="10">
+                                <f:validateLength minimum="1" maximum="30"/>
+                            </h:inputText>
+                        </h:column>
+
+                        <h:column>
+                            <f:facet name='header'>Description</f:facet>
+                            <h:inputTextarea rows="5" value="#{freelancerMBean.description}">
+                                <f:validateLength minimum="1" maximum="500"/>
+                            </h:inputTextarea>
+                        </h:column>
+
+                        <h:column>
+                            <f:facet name='header'>Skills</f:facet>
+                            <h:inputTextarea rows="3" value="#{freelancerMBean.skills}">
+                                <f:validateLength minimum="1" maximum="500"/>
+                            </h:inputTextarea>
+                        </h:column>
+
+                        <h:column>
+                            <f:facet name='header'>Username</f:facet>
+                            <h:inputText value="#{freelancerMBean.username}" size="10">
+                                <f:validateLength minimum="1" maximum="20"/>
+                            </h:inputText>
+                        </h:column>
+
+                        <h:column>
+                            <f:facet name='header'>Password</f:facet>
+                            <h:inputSecret value="#{freelancerMBean.password}" size="10">
+                                <f:validator validatorId="passvalidator"/>
+                            </h:inputSecret>
+                        </h:column>
+
+                    </h:dataTable>
+                    </h3>
+                    <h:panelGrid columns="3">
+                        <h:commandButton value="Save Changes" action="#{freelancerMBean.updateFreelancer()}"
+                                         rendered ="#{freelancerMBean.correct}" />
+                        <h:commandButton value="Back" action="freelancer_home" immediate="true"/>
+                    </h:panelGrid>
+                </h:form>
+                <br/><br/>
+            </ui:define>
+        </ui:composition>
+        
+    </h:body>
+</html>
+

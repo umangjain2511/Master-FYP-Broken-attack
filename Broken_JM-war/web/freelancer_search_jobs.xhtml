@@ -1,0 +1,38 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets">
+    
+    <h:body>
+        
+        <ui:composition template="/templates/freelancerTemplate.xhtml">
+            <ui:define name="content">
+                <h1>Search Job Listings</h1>
+                <hr />
+                <h:outputText value="Unauthorised Access"
+                              rendered="#{not freelancerMBean.correct}"/>
+                <h:form>
+                    <h:panelGrid columns="3" border = "5"
+                                    cellpadding = "15" cellspacing = "10"
+                                    rendered="#{freelancerMBean.correct}" >
+                        Search Jobs By Keyword: 
+                        <h:inputText value="#{jobMBean.search}" />
+                        <h:commandButton action="search_jobs_by_keyword" value="Search By Keyword"/>
+                        Search Jobs By ID: 
+                        <h:inputText value="#{jobMBean.id}"/>
+                        <h:commandButton action="search_jobs_by_id" value="Search By ID"/>
+                        Search Open Jobs: 
+                        <h:commandButton action="search_open_jobs" value="Search All Open Jobs"/>
+                    </h:panelGrid>
+                    <h:outputText value=""/>
+                    <hr />
+                    <h:commandButton action="freelancer_home" value="Home"/>
+                </h:form>
+                <br/><br/>
+            </ui:define>
+        </ui:composition>
+        
+    </h:body>
+</html>
+
