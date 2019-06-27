@@ -36,7 +36,7 @@ public class ProviderEJB implements ProviderRemoteEJB {
         return query.getResultList();
     }
     
-    @Override
+   /* @Override
     public String[] getProviderName(String username, String password) {
         String[] data=new String[2];
         try{
@@ -55,7 +55,7 @@ public class ProviderEJB implements ProviderRemoteEJB {
             data[1] = "incorrect";
         }
         return data;
-    }
+    } */
     
     @Override
     public void registerProvider(String name,String username,String password) {

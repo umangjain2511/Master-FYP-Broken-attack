@@ -18,7 +18,7 @@ public interface ProviderRemoteEJB {
     
     public List<Provider> searchProviders();
     
-    public String[] getProviderName(String username, String password);
+   // public String[] getProviderName(String username, String password);
     
     public void registerProvider(String name,String username,String password);
     

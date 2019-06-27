@@ -10,25 +10,15 @@
         <ui:composition template="/templates/freelancerTemplate.xhtml">
             <ui:define name="content">
                 <h:form>
-                <h1>Welcome #{freelancerMBean.getFreelancerName()}</h1>
                 <hr />
-                <br/>              
-                <h:outputText value="Invalid userid or password"
-                                  rendered="#{not freelancerMBean.correct}"/>                
+                <br/>                              
                     <h:panelGrid columns="2" border = "5"
                                     cellpadding = "15" cellspacing = "10">
-                        <h:commandButton action="freelancer_edit_profile" value="Edit Profile"
-                                         rendered="#{freelancerMBean.correct}"/>
-                        <h:commandButton action="freelancer_search_jobs" value="Search Jobs"
-                                         rendered="#{freelancerMBean.correct}"/>
-                        <h:commandButton action="freelancer_balance" value="View Balance in Account"
-                                         rendered="#{freelancerMBean.correct}"/>
-                        <h:commandButton action="index" value="Try again"
-                                         rendered="#{not freelancerMBean.correct}"/>
-                        <h:commandButton action="job_ass_to_me" value="Jobs assigned to me"
-                                         rendered="#{freelancerMBean.correct}"/>
-                        <h:commandButton action="index" value="Logout">
-                            <f:actionListener binding="#{freelancerMBean.logout()}" />
+                        <h:commandButton action="freelancer_edit_profile" value="Edit Profile"/>
+                        <h:commandButton action="freelancer_search_jobs" value="Search Jobs"/>
+                        <h:commandButton action="freelancer_balance" value="View Balance in Account"/>
+                        <h:commandButton action="job_ass_to_me" value="Jobs assigned to me"/>
+                        <h:commandButton action="#{freelancerMBean.logout()}" value="Logout">
                         </h:commandButton>
                     </h:panelGrid>
                 </h:form>    

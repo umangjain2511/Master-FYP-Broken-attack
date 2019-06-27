@@ -8,8 +8,7 @@
         
         <ui:composition template="/templates/freelancerTemplate.xhtml">
             <ui:define name="content">
-                <h1>Greetings #{freelancerMBean.getFreelancerName()}</h1>
-                <hr/>
+                
                 <h3> Your Balance is #{freelancerMBean.getFreelancerBalance()} </h3>
                 <h:form>
                     <h:panelGrid columns="2">

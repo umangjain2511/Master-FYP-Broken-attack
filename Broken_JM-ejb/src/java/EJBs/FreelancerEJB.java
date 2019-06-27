@@ -35,8 +35,8 @@ public class FreelancerEJB implements FreelancerRemoteEJB {
         return query.getResultList();
     }
     
-    @Override
-    public String[] getFreelancerName(String username,String password) {
+    //@Override
+    /* public String[] getFreelancerName(String username,String password) {
         String[] data=new String[2];
         try{
             Query query = em.createNamedQuery("Freelancers.findByUsername").setParameter("username", username);
@@ -54,7 +54,7 @@ public class FreelancerEJB implements FreelancerRemoteEJB {
             data[1] = "incorrect";
         }
         return data;
-    }
+    } */
     
     @Override
     public int getFreelancerBalance(String username) {

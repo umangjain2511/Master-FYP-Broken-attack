@@ -10,24 +10,14 @@
         <ui:composition template="/templates/providerTemplate.xhtml">
             <ui:define name="content">
                 <h:form>
-                    <h1>Welcome #{providerMBean.getProviderName()}</h1>
-                    <hr/>
-                    <h:outputText value="Invalid userid or password"
-                                  rendered="#{not providerMBean.correct}"/>
+
                     <h:panelGrid columns="2" border = "5"
                                     cellpadding = "15" cellspacing = "10">
-                        <h:commandButton action="create_job" value="Create new job"
-                                         rendered="#{providerMBean.correct}"/>
-                        <h:commandButton action="list_job" value="List posted jobs"
-                                         rendered="#{providerMBean.correct}"/>
-                        <h:commandButton action="ass_job" value="Assigned Jobs"
-                                         rendered="#{providerMBean.correct}"/>
-                        <h:commandButton action="sh_job_app" value="Show job applicants"
-                                         rendered="#{providerMBean.correct}"/>                      
-                        <h:commandButton action="index" value="Try again"
-                                         rendered="#{not providerMBean.correct}"/>
-                        <h:commandButton action="index" value="Logout">
-                            <f:actionListener binding="#{providerMBean.logout()}" />
+                        <h:commandButton action="create_job" value="Create new job"/>
+                        <h:commandButton action="list_job" value="List posted jobs"/>
+                        <h:commandButton action="ass_job" value="Assigned Jobs"/>
+                        <h:commandButton action="sh_job_app" value="Show job applicants"/> 
+                        <h:commandButton action="#{providerMBean.logout()}" value="Logout">
                         </h:commandButton>
                     </h:panelGrid>
                 </h:form>    

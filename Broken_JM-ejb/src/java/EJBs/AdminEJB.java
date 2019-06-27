@@ -34,8 +34,8 @@ public class AdminEJB implements AdminRemoteEJB {
         return query.getResultList();
     }
     
-    @Override
-    public String[] searchAdminName(String username,String password) {
+   // @Override
+  /*  public String[] searchAdminName(String username,String password) {
         String [] data = new String[2];
         try{
             Query query = em.createNamedQuery("Admin.findByUsername").setParameter("username", username);
@@ -53,6 +53,6 @@ public class AdminEJB implements AdminRemoteEJB {
             data[1] = "incorrect";
         }
         return data;
-    }
+    } */
     
 }

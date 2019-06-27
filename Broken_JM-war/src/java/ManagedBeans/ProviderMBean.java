@@ -13,8 +13,14 @@ import Entities.Provider;
 import javax.inject.Named;
 import javax.enterprise.context.SessionScoped;
 import java.io.Serializable;
+import java.sql.Connection;
+import java.sql.DriverManager;
+import java.sql.PreparedStatement;
+import java.sql.ResultSet;
+import java.sql.SQLException;
 import javax.ejb.EJB;
 import java.util.List;
+import javax.swing.JOptionPane;
 
 /**
  *
@@ -23,6 +29,10 @@ import java.util.List;
 @Named(value = "providerMBean")
 @SessionScoped
 public class ProviderMBean implements Serializable {
+    
+    private static final String URL = "jdbc:derby://localhost:1527/sample";
+    private static final String USER = "app";
+    private static final String PASSWD = "app";
 
     @EJB
     ProviderRemoteEJB provBean;
@@ -113,7 +123,7 @@ public class ProviderMBean implements Serializable {
         return provBean.searchProviders();
     }
     
-    public String getProviderName() {
+   /* public String getProviderName() {
         String[] data = provBean.getProviderName(username, password);
         if(data[1]=="correct")
             correct=true;
@@ -121,6 +131,32 @@ public class ProviderMBean implements Serializable {
             correct=false;
         String uname = (String) data[0];
         return uname;
+    } */
+    
+    public String validate() {
+        String valid = authenticate(username,password);
+        return valid;
+    }
+    
+    public String authenticate(String uname, String upass) {
+        String returnPage = null;
+        String sql = "SELECT username, password FROM PROVIDER WHERE username=?";
+        try(Connection connect = DriverManager.getConnection(URL,USER,PASSWD);
+                PreparedStatement stmt = connect.prepareStatement(sql)) {
+            stmt.setString(1, uname);
+            ResultSet rs = stmt.executeQuery();
+            rs.next();
+            String checkUsername = rs.getString("username");
+            String checkPassword = rs.getString("password");
+            if(checkUsername.equals(uname) && checkPassword.equals(upass))
+                returnPage = "employer_home";
+            else
+                returnPage = "index";
+        } catch(SQLException ex) {
+            JOptionPane.showMessageDialog(null, "Message: " + ex.getMessage());
+            JOptionPane.showMessageDialog(null, "State: " + ex.getSQLState());
+        }
+        return returnPage;
     }
     
     public void delete(Provider pr) {
@@ -152,9 +188,10 @@ public class ProviderMBean implements Serializable {
         job.jobAssign(jobid, fl.getUsername());
     }
     
-    public void logout() {
-        username="";
-        password="";
+    public String logout() {
+       // username="";
+       // password="";
+       return "index";
     }
     
     public List<Jobs> providerAssJob() {

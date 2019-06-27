@@ -10,26 +10,14 @@
         <ui:composition template="/templates/adminTemplate.xhtml">
             <ui:define name="content">
                 <h:form>
-                    <h1>Welcome #{adminMBean.searchAdminName()}</h1>
-                    <hr/>
-                    <h:outputText value="Invalid userid or password"
-                                  rendered="#{not adminMBean.correct}"/>
                     <h:panelGrid columns="2" border = "5"
                                     cellpadding = "15" cellspacing = "10">
-                        <h:commandButton action="reg_fl" value="Register Freelancer"
-                                         rendered="#{adminMBean.correct}"/>
-                        <h:commandButton action="reg_e" value="Register Provider"
-                                         rendered="#{adminMBean.correct}"/>
-                        <h:commandButton action="rem_fl" value="Remove Freelancer"
-                                         rendered="#{adminMBean.correct}"/>
-                        <h:commandButton action="rem_e" value="Remove Provider"
-                                         rendered="#{adminMBean.correct}"/>
-                        <h:commandButton action="list_all_jobs" value="Show all jobs"
-                                         rendered="#{adminMBean.correct}"/>
-                        <h:commandButton action="index" value="Try again"
-                                         rendered="#{not adminMBean.correct}"/>
-                        <h:commandButton action="index" value="Logout">
-                            <f:actionListener binding="#{adminMBean.logout()}" />
+                        <h:commandButton action="reg_fl" value="Register Freelancer"/>
+                        <h:commandButton action="reg_e" value="Register Provider"/>
+                        <h:commandButton action="rem_fl" value="Remove Freelancer"/>
+                        <h:commandButton action="rem_e" value="Remove Provider"/>
+                        <h:commandButton action="list_all_jobs" value="Show all jobs"/>
+                        <h:commandButton action="#{adminMBean.logout()}" value="Logout">
                         </h:commandButton>
                     </h:panelGrid>
                 </h:form>
