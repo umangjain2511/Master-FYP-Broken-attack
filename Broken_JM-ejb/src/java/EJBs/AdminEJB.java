@@ -32,27 +32,6 @@ public class AdminEJB implements AdminRemoteEJB {
     public List<Admin> searchAdmin(String username) {
         Query query = em.createNamedQuery("Admin.findByUsername").setParameter("username", username);
         return query.getResultList();
-    }
-    
-   // @Override
-  /*  public String[] searchAdminName(String username,String password) {
-        String [] data = new String[2];
-        try{
-            Query query = em.createNamedQuery("Admin.findByUsername").setParameter("username", username);
-            Admin adm = (Admin)query.getResultList().get(0);
-            data[0] = adm.getName();
-            if(adm.getPassword().equals(password)){
-                data[1] = "correct"; 
-            }
-            else{
-                data[1] = "incorrect";
-            }
-        }
-        catch(Exception e){
-            data[0] = "Error";
-            data[1] = "incorrect";
-        }
-        return data;
-    } */
+    }    
     
 }

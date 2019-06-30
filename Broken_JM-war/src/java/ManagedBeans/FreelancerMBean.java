@@ -150,16 +150,6 @@ public class FreelancerMBean implements Serializable {
         return fl;
     } 
     
-  /*  public String getFreelancerName() {
-        String[] data = freeBean.getFreelancerName(username, password);
-        if(data[1]=="correct")
-            correct=true;
-        else
-            correct=false;
-        String uname = (String) data[0];
-        return uname;
-    } */
-    
     public String validate() {
         String valid=authenticate(username,password);
         return valid;

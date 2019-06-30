@@ -18,8 +18,6 @@ public interface ProviderRemoteEJB {
     
     public List<Provider> searchProviders();
     
-   // public String[] getProviderName(String username, String password);
-    
     public void registerProvider(String name,String username,String password);
     
     public void delete(String username);
@@ -27,5 +25,7 @@ public interface ProviderRemoteEJB {
     public void createJob(String title, String description,int pay,String keywords,String username);
     
     public void complete(int id);  
+    
+    public boolean changePass(String old_password, String new_password, String username);
     
 }

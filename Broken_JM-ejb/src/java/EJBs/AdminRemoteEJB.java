@@ -17,6 +17,5 @@ import javax.ejb.Remote;
 public interface AdminRemoteEJB {
     
     public List<Admin> searchAdmin(String username);    
-   // public String[] searchAdminName(String username,String password);
     
 }

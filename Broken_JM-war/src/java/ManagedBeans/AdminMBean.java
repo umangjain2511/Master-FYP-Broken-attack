@@ -70,16 +70,6 @@ public class AdminMBean implements Serializable {
         this.correct = correct;
     }
     
-   /* public String searchAdminName() {
-        String[] data = adm.searchAdminName(username, password);
-        if(data[1]=="correct")
-            correct=true;
-        else
-            correct=false;
-        String uname = (String) data[0];
-        return uname;
-    } */
-    
     public String validate() {
         String valid=authenticate(username,password);
         return valid;
@@ -107,8 +97,6 @@ public class AdminMBean implements Serializable {
     }
     
     public String logout() {
-      //  username="";
-      //  password="";
       return "index";
     }
     

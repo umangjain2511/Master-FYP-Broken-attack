@@ -18,8 +18,6 @@ public interface FreelancerRemoteEJB {
     
     public List<Freelancers> searchFreelancers();
     
-   // public String[] getFreelancerName(String username,String password);
-    
     public int getFreelancerBalance(String username);
     
     public List<Freelancers> searchFreelancersName(String username);

@@ -43,6 +43,8 @@ public class ProviderMBean implements Serializable {
     private String username,password,name,description,title,keywords;
     int pay,jobid;
     private boolean correct=false;
+    private String old_password,new_password;
+    private boolean passChange=false;
     
     public ProviderMBean() {
     }
@@ -118,20 +120,36 @@ public class ProviderMBean implements Serializable {
     public void setCorrect(boolean correct) {
         this.correct = correct;
     }
+
+    public String getOld_password() {
+        return old_password;
+    }
+
+    public void setOld_password(String old_password) {
+        this.old_password = old_password;
+    }
+
+    public String getNew_password() {
+        return new_password;
+    }
+
+    public void setNew_password(String new_password) {
+        this.new_password = new_password;
+    }
+
+    public boolean isPassChange() {
+        return passChange;
+    }
+
+    public void setPassChange(boolean passChange) {
+        this.passChange = passChange;
+    }
+    
+    
     
     public List<Provider> searchProviders() {
         return provBean.searchProviders();
     }
-    
-   /* public String getProviderName() {
-        String[] data = provBean.getProviderName(username, password);
-        if(data[1]=="correct")
-            correct=true;
-        else
-            correct=false;
-        String uname = (String) data[0];
-        return uname;
-    } */
     
     public String validate() {
         String valid = authenticate(username,password);
@@ -200,6 +218,12 @@ public class ProviderMBean implements Serializable {
     
     public void complete(Jobs j) {
         provBean.complete(j.getId());
+    }
+    
+    public void changePass() {
+        passChange=provBean.changePass(old_password, new_password, username);
+        if(passChange)
+            password=new_password;
     }
                
 }
