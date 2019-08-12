@@ -74,7 +74,7 @@ public class ProviderEJB implements ProviderRemoteEJB {
             }
         }
         max=max+1;
-        Query query = em.createNativeQuery("INSERT INTO Jobs (id,title,description,pay,keywords,e_uname,status) values(?,?,?,?,?,?,?)");
+        Query query = em.createNativeQuery("INSERT INTO Jobs (id,title,description,pay,keywords,euname,status) values(?,?,?,?,?,?,?)");
         query.setParameter(2, title);
         query.setParameter(3, description);
         query.setParameter(4, pay);
